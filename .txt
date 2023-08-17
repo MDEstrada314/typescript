@@ -1,0 +1,4 @@
+
+//lector de consola  
+npm install readline-sync
+npm i --save-dev @types/readline-sync

@@ -4,7 +4,8 @@ class Centro{
     constructor(
        public id: number,
        public nombre: string,
-       public campers:number
+       public cantidad:number,
+       public campers:Array<any>
     ){}
 }
 
@@ -36,11 +37,11 @@ class Campers{
 
 
 
-const campus = new Centro (1,'Campus',0)
-const trimer = new Centro (2,'Trimer',0)
-const fertor = new Centro (3,'fertor',0)
-const artemis = new Centro (4,'Artemis',0)
-const apolo = new Centro (5,'Apolo',0)
+const campus = new Centro (1,'Campus',0,[])
+const trimer = new Centro (2,'Trimer',0,[])
+const fertor = new Centro (3,'fertor',0,[])
+const artemis = new Centro (4,'Artemis',0,[])
+const apolo = new Centro (5,'Apolo',0,[])
 
 
 const java = new Rutas (1,'java')
@@ -56,9 +57,10 @@ const JS = new Nivel(1,'JS')
 const Boostrap = new Nivel(1,'Boostrap')
 
 
-
+let idcamper=1
 let opcion = -1
 let arrayCampers = []
+let arraytrimer = []
 
 while (opcion !== 0) {
     const reset = "\x1b[0m";
@@ -88,8 +90,7 @@ while (opcion !== 0) {
         
            console.log(`\n selecione el numero del centro que desea asignar`);
             
-           console.log(`\n1. ${campus.nombre}
-           2. ${trimer.nombre} \n3. ${fertor.nombre}\n4. ${artemis.nombre}\n5. ${apolo.nombre}\n`);
+           console.log(`\n1. ${campus.nombre}\n2. ${trimer.nombre} \n3. ${fertor.nombre}\n4. ${artemis.nombre}\n5. ${apolo.nombre}\n`);
 
 
            let centro = Number(readlineSync.question('Ingrese el centro: '))
@@ -97,9 +98,22 @@ while (opcion !== 0) {
             switch (centro){
                 case 1:
                     nombreCentro = campus.nombre
+                    const camper1 = new Campers (idcamper,'',false,'')
+                    camper1.nombre = nombre
+                    arrayCampers.push(camper1)
+                    campus.campers = arrayCampers
+                    console.log(campus);
+                    idcamper++
+                    
                     break
                 case 2:
                     nombreCentro = trimer.nombre
+                    const camper2 = new Campers (idcamper,'',false,'')
+                    camper2.nombre = nombre
+                    arraytrimer.push(camper2)
+                    trimer.campers = arraytrimer
+                    console.log(trimer);
+                    idcamper++
                     break
                 case 3:
                     nombreCentro = fertor.nombre
@@ -113,11 +127,7 @@ while (opcion !== 0) {
             }
 
 
-            const camper1 = new Campers (1,'',true,'')
-            camper1.nombre = nombre
-            console.log(camper1);
-            arrayCampers.push(camper1)
-            console.log(arrayCampers);
+            
             
             
 
